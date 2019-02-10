@@ -1,22 +1,121 @@
-import { Head } from 'mdx-deck'
-
-export { default as theme } from './theme'
+import { Head } from 'mdx-deck';
+import { LiveCode } from 'mdx-deck-live-code';
+import { CodeSurfer } from 'mdx-deck-code-surfer';
+import dracula from 'prism-react-renderer/themes/dracula';
+import LocaleContext, {
+  LocaleContextProvider
+} from './context/LocaleContextClass';
+export { default as theme } from './theme';
 
 <Head>
-  <title>Presentation Title</title>
+  <title>React hooks</title>
 </Head>
 
-# Hello
+# React hooks
 
 ---
 
-## Edit this file
+## Agenda
 
-To create your presentation
+- What they hooks
+- Why they are useful
+- useState
+- useEffect
+- useContext
+- custom hooks
+- testing
 
 ```notes
 - Create speaker notes in fenced code blocks
 ```
+
+---
+
+# What are hooks?
+
+- Allow access to features previously requiring a class
+- A Remedy for HOC “wrapper hell”
+- Hooks allow you to reuse stateful logic without changing your component hierarchy.
+
+---
+
+# Why are they useful
+
+- Solve a wide variety of seemingly unconnected problems
+- Reuse stateful logic between components
+- Test stateful logic independently
+
+https://reactjs.org/docs/hooks-intro.html#motivation
+
+---
+
+## State
+
+---
+
+<LiveCode
+  title="Old way"
+  size="large"
+  code={require('!raw-loader!./components/UseStateClass.js')}
+/>
+
+---
+
+<LiveCode
+  title="Hooks way"
+  size="large"
+  code={require('!raw-loader!./components/UseStateHook.js')}
+/>
+
+---
+
+## Effects
+
+---
+
+<LiveCode
+  title="old way"
+  size="large"
+  code={require('!raw-loader!./components/UseEffectClass.js')}
+/>
+
+---
+
+<LiveCode
+  title="Hooks way"
+  size="large"
+  code={require('!raw-loader!./components/UseEffectHook.js')}
+/>
+
+---
+
+## Context
+
+---
+
+<CodeSurfer
+  lang="javascript"
+  theme={dracula}
+  code={require('!raw-loader!./context/LocaleContextClass.js')}
+/>
+
+---
+
+<LiveCode
+  providerProps={{
+    scope: { LocaleContext, LocaleContextProvider }
+  }}
+  code={require('!raw-loader!./components/UseContextComp.js')}
+/>
+
+---
+
+<LiveCode
+  providerProps={{
+    scope: { LocaleContext, LocaleContextProvider }
+  }}
+  code={require('!raw-loader!./components/UseContextHook.js')}
+/>
 
 ---
 
