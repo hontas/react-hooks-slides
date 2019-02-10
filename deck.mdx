@@ -17,12 +17,12 @@ export { default as theme } from './theme';
 
 ## Agenda
 
-- What they hooks
-- Why they are useful
+- Hooks let you...
 - useState
 - useEffect
 - useContext
 - custom hooks
+- other hooks
 - testing
 
 ```notes
@@ -31,19 +31,11 @@ export { default as theme } from './theme';
 
 ---
 
-# What are hooks?
+# Hooks let you...
 
-- Allow access to features previously requiring a class
-- A Remedy for HOC “wrapper hell”
-- Hooks allow you to reuse stateful logic without changing your component hierarchy.
-
----
-
-# Why are they useful
-
-- Solve a wide variety of seemingly unconnected problems
-- Reuse stateful logic between components
-- Test stateful logic independently
+- reuse logic between components without changing component hierarchy.
+- split one component into smaller functions based on what pieces are related.
+- use React without classes.
 
 https://reactjs.org/docs/hooks-intro.html#motivation
 
@@ -54,7 +46,7 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
-  title="Old way"
+  title="State using Class"
   size="large"
   code={require('!raw-loader!./components/UseStateClass.js')}
 />
@@ -62,7 +54,7 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
-  title="Hooks way"
+  title="State using hooks"
   size="large"
   code={require('!raw-loader!./components/UseStateHook.js')}
 />
@@ -74,7 +66,7 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
-  title="old way"
+  title="Effects using Class"
   size="large"
   code={require('!raw-loader!./components/UseEffectClass.js')}
 />
@@ -82,7 +74,7 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
-  title="Hooks way"
+  title="Effects using hooks"
   size="large"
   code={require('!raw-loader!./components/UseEffectHook.js')}
 />
@@ -102,6 +94,8 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
+  title="Context API"
+  size="large"
   providerProps={{
     scope: { LocaleContext, LocaleContextProvider }
   }}
@@ -111,10 +105,48 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
+  title="Context using hooks"
+  size="large"
   providerProps={{
     scope: { LocaleContext, LocaleContextProvider }
   }}
   code={require('!raw-loader!./components/UseContextHook.js')}
+/>
+
+---
+
+<LiveCode
+  title="useRef as instance variable"
+  size="large"
+  code={require('!raw-loader!./components/UseRefHook.js')}
+/>
+
+---
+
+## Other hooks
+
+- lazy useState(() => {})
+- useReducer(reducer, initialArg, lazyInitFn)
+- initialState = lazyInitFn(initialArg);
+- useMemo(() => {}, [])
+- useCallback(() => {}, [])
+- useLayoutEffect(() => {})
+- useDebugValue(value)
+  - use in custom hook
+  - useDebugValue(date, date => date.toDateString());
+
+---
+
+## Testing
+
+As long as you dont depend on implementation details in your tests - `there should be no difference`™
+
+---
+
+<CodeSurfer
+  title="Testing effect"
+  language="javascript"
+  code={require('!raw-loader!./components/TestEffectHook.js')}
 />
 
 ---
