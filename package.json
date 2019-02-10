@@ -13,7 +13,12 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "devDependencies": {
-    "mdx-deck": "^1.6.7"
+    "mdx-deck": "^1.6.7",
+    "raw-loader": "^1.0.0"
   },
-  "name": "react-hooks"
+  "name": "react-hooks",
+  "dependencies": {
+    "mdx-deck-code-surfer": "^0.5.5",
+    "mdx-deck-live-code": "^1.0.0"
+  }
 }
