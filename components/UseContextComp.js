@@ -16,7 +16,11 @@ function UseContextComp() {
               }
             >
               {context.availableLocales.map((locale) => (
-                <option value={locale} children={locale} />
+                <option
+                  key={locale}
+                  value={locale}
+                  children={locale}
+                />
               ))}
             </select>
           </div>

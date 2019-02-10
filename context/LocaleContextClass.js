@@ -11,12 +11,16 @@ export class LocaleContextProvider extends React.Component {
 
   componentDidMount() {
     // 1. fetch avalable locales
-    setTimeout(() => {
+    this.setTimeoutId = setTimeout(() => {
       this.setState({
         availableLocales: ['sv-se', 'en-us'],
         isLoading: false
       });
     }, 2500);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.setTimeoutId);
   }
 
   selectLocale = (locale) => {
