@@ -8,10 +8,12 @@ export default {
     },
     editor: {
       // editor styles
+      flexBasis: '60%'
     },
     preview: {
       // preview styles
-      background: 'whitesmoke'
+      background: 'whitesmoke',
+      flexBasis: '40%'
     },
     error: {
       // error styles

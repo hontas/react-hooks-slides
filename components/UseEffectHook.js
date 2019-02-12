@@ -1,14 +1,15 @@
-function WrapperFn() {
+() => {
   function Modal({ close }) {
     const modalRef = React.useRef(null);
 
-    React.useEffect(() => {
-      function handleClick({ target }) {
-        if (target === modalRef.current) return;
-        if (target.contains(modalRef.current)) {
-          close();
-        }
+    function handleClick({ target }) {
+      if (target === modalRef.current) return;
+      if (target.contains(modalRef.current)) {
+        close();
       }
+    }
+
+    React.useEffect(() => {
       document.addEventListener('click', handleClick);
 
       return () => {
@@ -17,32 +18,27 @@ function WrapperFn() {
     }, []);
 
     return (
-      <div
-        ref={modalRef}
-        style={{ background: 'coral', padding: '1em' }}
-      >
-        <button onClick={close}>close modal</button>
+      <div ref={modalRef} className="modal">
+        <button onClick={close}>╳</button>
         <p>Modal</p>
       </div>
     );
   }
 
   function Wrapper() {
-    const [showModal, setShowModal] = React.useState(true);
+    const [showModal, setShowModal] = React.useState(false);
 
     return (
-      <div>
+      <div style={{ padding: '1em' }}>
         {!showModal && (
-          <button onClick={() => setShowModal(true)}>
+          <button className="btn" onClick={() => setShowModal(true)}>
             show modal
           </button>
         )}
-        {showModal && (
-          <Modal close={() => setShowModal(false)} />
-        )}
+        {showModal && <Modal close={() => setShowModal(false)} />}
       </div>
     );
   }
 
   return <Wrapper />;
-}
+};

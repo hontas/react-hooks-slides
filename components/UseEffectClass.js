@@ -1,4 +1,4 @@
-function WrapperFn() {
+() => {
   class Modal extends React.Component {
     constructor(props) {
       super(props);
@@ -11,10 +11,7 @@ function WrapperFn() {
     }
 
     componentWillUnmount() {
-      document.removeEventListener(
-        'click',
-        this.handleClick
-      );
+      document.removeEventListener('click', this.handleClick);
     }
 
     handleClick({ target }) {
@@ -26,13 +23,8 @@ function WrapperFn() {
 
     render() {
       return (
-        <div
-          ref={this.modalRef}
-          style={{ background: 'coral', padding: '1em' }}
-        >
-          <button onClick={this.props.close}>
-            close modal
-          </button>
+        <div ref={this.modalRef} className="modal">
+          <button onClick={this.props.close}>╳</button>
           <p>Modal</p>
         </div>
       );
@@ -42,7 +34,7 @@ function WrapperFn() {
   class Wrapper extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { showModal: true };
+      this.state = { showModal: false };
       this.toggleModal = this.toggleModal.bind(this);
     }
 
@@ -55,17 +47,18 @@ function WrapperFn() {
     render() {
       const { showModal } = this.state;
       return (
-        <div>
-          {!showModal && (
-            <button onClick={this.toggleModal}>
+        <div style={{ padding: '1em' }}>
+          {showModal ? (
+            <Modal close={this.toggleModal} />
+          ) : (
+            <button className="btn" onClick={this.toggleModal}>
               show modal
             </button>
           )}
-          {showModal && <Modal close={this.toggleModal} />}
         </div>
       );
     }
   }
 
   return <Wrapper />;
-}
+};

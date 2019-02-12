@@ -1,4 +1,4 @@
-class Stateful extends React.Component {
+class StatefulClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,9 @@ class Stateful extends React.Component {
         <button onClick={() => this.toggleExpanded()}>
           {isExpanded ? 'Collapse ▴' : 'Expand ▾'}
         </button>
-        {isExpanded && <div>Unfolded</div>}
+        {isExpanded && (
+          <div className="expandable__body">Unfolded</div>
+        )}
       </div>
     );
   }

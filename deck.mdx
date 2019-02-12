@@ -2,9 +2,7 @@ import { Head } from 'mdx-deck';
 import { LiveCode } from 'mdx-deck-live-code';
 import { CodeSurfer } from 'mdx-deck-code-surfer';
 import dracula from 'prism-react-renderer/themes/dracula';
-import LocaleContext, {
-  LocaleContextProvider
-} from './context/LocaleContextClass';
+import LocaleContext, { LocaleContextProvider } from './context/LocaleContextHook';
 import usePersistantState from './lib/customHook';
 export { default as theme } from './theme';
 import 'style-loader!css-loader!./styles/base.css';
@@ -20,84 +18,79 @@ import 'style-loader!css-loader!./styles/base.css';
 ## Agenda
 
 - Hooks let you...
-- useState
-- useEffect
-- useContext
-- custom hooks
+- use[State|Effect|Context]
 - other hooks
-- testing
-
-```notes
-- Create speaker notes in fenced code blocks
-```
+- custom hooks
+- testing hooks
 
 ---
 
 # Hooks let you...
 
-- reuse logic between components without changing component hierarchy.
-- split one component into smaller functions based on what pieces are related.
-- use React without classes.
+- reuse component logic without changing hierarchy
+- split one component into smaller functions based on what pieces are related
+- use React without classes 😆❤️
 
-https://reactjs.org/docs/hooks-intro.html#motivation
+[tweet: related code](https://twitter.com/threepointone/status/1056594421079261185)  
+[tweet: hooks minification](https://twitter.com/jamiebuilds/status/1056015484364087297)  
+[docs: hooks motivation](https://reactjs.org/docs/hooks-intro.html#motivation)
 
----
-
-## State
-
----
-
-<LiveCode
-  title="State using Class"
-  size="large"
-  code={require('!raw-loader!./components/UseStateClass.js')}
-/>
+```notes
+- resuse: no more "HOC hell"
+- split: related code together
+- no class: everybodys happy!
+```
 
 ---
 
-<LiveCode
-  title="State using hooks"
-  size="large"
-  code={require('!raw-loader!./components/UseStateHook.js')}
-/>
+## use State
 
 ---
 
-## Effects
+<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseStateClass.js')} />
 
 ---
 
-<LiveCode
-  title="Effects using Class"
-  size="large"
-  code={require('!raw-loader!./components/UseEffectClass.js')}
-/>
+<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseStateHook.js')} />
+
+```notes
+- setState(value)
+- setState(prev => nextValue)
+- setState(prev => ({ ...prev, update }))
+```
 
 ---
 
-<LiveCode
-  title="Effects using hooks"
-  size="large"
-  code={require('!raw-loader!./components/UseEffectHook.js')}
-/>
+## use Effect
+
+- componentDidMount
+- componentDidUpdate
+- componentWillUnmount
 
 ---
 
-## Context
+<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseEffectClass.js')} />
+
+---
+
+<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseEffectHook.js')} />
+
+---
+
+## use Context
 
 ---
 
 <CodeSurfer
   lang="javascript"
   theme={dracula}
-  code={require('!raw-loader!./context/LocaleContextClass.js')}
+  code={require('!raw-loader!./context/LocaleContextHook.js')}
 />
 
 ---
 
 <LiveCode
-  title="Context API"
-  size="large"
+  size="fullscreen"
   providerProps={{
     scope: { LocaleContext, LocaleContextProvider }
   }}
@@ -107,13 +100,29 @@ https://reactjs.org/docs/hooks-intro.html#motivation
 ---
 
 <LiveCode
-  title="Context using hooks"
-  size="large"
+  size="fullscreen"
   providerProps={{
     scope: { LocaleContext, LocaleContextProvider }
   }}
   code={require('!raw-loader!./components/UseContextHook.js')}
 />
+
+---
+
+<CodeSurfer
+  lang="javascript"
+  theme={dracula}
+  title="Other hooks"
+  code={require('!raw-loader!./components/OtherHooks.js')}
+/>
+
+---
+
+# Instance variables
+
+---
+
+<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseRefHook.js')} />
 
 ---
 
@@ -142,32 +151,6 @@ Easily share and test reusable logic
 
 ---
 
-# instance variable
-
----
-
-<LiveCode
-  title="useRef as instance variable"
-  size="large"
-  code={require('!raw-loader!./components/UseRefHook.js')}
-/>
-
----
-
-## Other hooks
-
-- lazy useState(() => {})
-- useReducer(reducer, initialArg, lazyInitFn)
-- initialState = lazyInitFn(initialArg);
-- useMemo(() => {}, [])
-- useCallback(() => {}, [])
-- useLayoutEffect(() => {})
-- useDebugValue(value)
-  - use in custom hook
-  - useDebugValue(date, date => date.toDateString());
-
----
-
 ## Testing
 
 As long as you dont depend on implementation details in your tests - `there should be no difference`™
@@ -182,4 +165,4 @@ As long as you dont depend on implementation details in your tests - `there shou
 
 ---
 
-## Le fin
+## Hooked? 😌

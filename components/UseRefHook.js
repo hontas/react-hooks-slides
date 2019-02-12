@@ -3,27 +3,23 @@ function UseRef({ close }) {
   const intervalRef = React.useRef(null);
   let intervalId;
 
-  const stopIntervalLet = () => clearInterval(intervalId);
-  const stopIntervalRef = () =>
-    clearInterval(intervalRef.current);
+  const clearIntervalLet = () => clearInterval(intervalId);
+  const clearIntervalRef = () => clearInterval(intervalRef.current);
 
   React.useEffect(() => {
-    intervalId = setInterval(
-      () => setSeconds((s) => s + 1),
-      1000
-    );
+    intervalId = setInterval(() => setSeconds((s) => s + 1), 1000);
     intervalRef.current = intervalId;
-    return stopIntervalRef;
+    return clearIntervalRef;
   }, []);
 
   return (
-    <div>
+    <div className="flex--column">
       <p>{seconds}</p>
-      <button onClick={stopIntervalLet}>
-        Clear interval let
+      <button className="btn" onClick={clearIntervalLet}>
+        clear intervalId
       </button>
-      <button onClick={stopIntervalRef}>
-        Clear interval ref
+      <button className="btn" onClick={clearIntervalRef}>
+        clear intervalRef.current
       </button>
     </div>
   );

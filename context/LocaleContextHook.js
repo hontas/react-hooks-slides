@@ -10,14 +10,14 @@ export function LocaleContextProvider({ children }) {
   });
 
   React.useEffect(() => {
-    // 1. fetch avalable locales
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setState({
         ...state,
         availableLocales: ['sv-se', 'en-us'],
         isLoading: false
       });
     }, 2500);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   function selectLocale(locale) {

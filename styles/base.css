@@ -3,8 +3,30 @@ input,
 select {
   font-size: inherit;
 }
+button {
+  cursor: pointer;
+}
 button:focus {
   outline: none;
+}
+
+.btn {
+  background: teal;
+  border: none;
+  color: white;
+  font-size: smaller;
+  padding: 0.5em 1em;
+}
+.btn:hover {
+  background: hsl(180, 75%, 25%);
+}
+
+.flex {
+  display: flex;
+}
+.flex--column {
+  display: flex;
+  flex-direction: column;
 }
 
 .expandable button {
@@ -13,4 +35,25 @@ button:focus {
   padding: 0.5em;
   display: block;
   width: 100%;
+}
+.expandable__body {
+  background: white;
+  border-bottom: 1ps solid lightgray;
+  padding: 1em;
+}
+
+.modal {
+  background: coral;
+  padding: 1em;
+  position: relative;
+}
+.modal button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 0.5em;
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
