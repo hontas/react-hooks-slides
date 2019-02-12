@@ -20,15 +20,13 @@ export function LocaleContextProvider({ children }) {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  function selectLocale(locale) {
-    setState({ ...state, locale });
-  }
-
   return (
     <LocaleContext.Provider
       value={{
         ...state,
-        selectLocale
+        selectLocale(locale) {
+          setState({ ...state, locale });
+        }
       }}
       children={children}
     />
