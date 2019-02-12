@@ -11,6 +11,7 @@ export default {
     },
     preview: {
       // preview styles
+      background: 'whitesmoke'
     },
     error: {
       // error styles

@@ -2,23 +2,24 @@ class Stateful extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      isExpanded: false
     };
   }
 
+  toggleExpanded() {
+    this.setState(({ isExpanded }) => ({
+      isExpanded: !isExpanded
+    }));
+  }
+
   render() {
-    const { count } = this.state;
+    const { isExpanded } = this.state;
     return (
-      <div>
-        <p>Clicked {count} times</p>
-        <button
-          type="button"
-          onClick={() =>
-            this.setState({ count: count + 1 })
-          }
-        >
-          Click me
+      <div className="expandable">
+        <button onClick={() => this.toggleExpanded()}>
+          {isExpanded ? 'Collapse ▴' : 'Expand ▾'}
         </button>
+        {isExpanded && <div>Unfolded</div>}
       </div>
     );
   }

@@ -1,0 +1,16 @@
+button,
+input,
+select {
+  font-size: inherit;
+}
+button:focus {
+  outline: none;
+}
+
+.expandable button {
+  background: teal;
+  color: white;
+  padding: 0.5em;
+  display: block;
+  width: 100%;
+}

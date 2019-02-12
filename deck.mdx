@@ -5,7 +5,9 @@ import dracula from 'prism-react-renderer/themes/dracula';
 import LocaleContext, {
   LocaleContextProvider
 } from './context/LocaleContextClass';
+import usePersistantState from './lib/customHook';
 export { default as theme } from './theme';
+import 'style-loader!css-loader!./styles/base.css';
 
 <Head>
   <title>React hooks</title>
@@ -112,6 +114,35 @@ https://reactjs.org/docs/hooks-intro.html#motivation
   }}
   code={require('!raw-loader!./components/UseContextHook.js')}
 />
+
+---
+
+## Custom hooks
+
+Easily share and test reusable logic
+
+---
+
+<CodeSurfer
+  lang="javascript"
+  theme={dracula}
+  title="Custom hook"
+  code={require('!raw-loader!./lib/customHook.js')}
+/>
+
+---
+
+<LiveCode
+  title="Custom hook"
+  providerProps={{
+    scope: { usePersistantState }
+  }}
+  code={require('!raw-loader!./components/UseCustomHook.js')}
+/>
+
+---
+
+# instance variable
 
 ---
 

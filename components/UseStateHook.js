@@ -1,15 +1,12 @@
 function Stateful() {
-  const [count, setCount] = React.useState(0);
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div>
-      <p>Clicked {count} times</p>
-      <button
-        type="button"
-        onClick={() => setCount(count + 1)}
-      >
-        Click me
+    <div className="expandable">
+      <button onClick={() => setIsExpanded(!isExpanded)}>
+        {isExpanded ? 'Collapse ▴' : 'Expand ▾'}
       </button>
+      {isExpanded && <div>Unfolded</div>}
     </div>
   );
 }
