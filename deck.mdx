@@ -17,22 +17,31 @@ import 'style-loader!css-loader!./styles/base.css';
 
 ## Agenda
 
-- Hooks let you...
+- What hooks are...
 - use[State|Effect|Context]
 - other hooks
 - custom hooks
 - testing hooks
+- rules of hooks
+- summary
 
 ---
 
-# Hooks let you...
+# Hooks are like mixins but...
+
+- they allow passing state from one to another.
+- it's explicit where logic is coming from.
+
+[hooks in vue.js](https://css-tricks.com/what-hooks-mean-for-vue)
+
+---
+
+# Hooks let us...
 
 - reuse component logic without changing hierarchy
 - split one component into smaller functions based on what pieces are related
 - use React without classes 😆❤️
 
-[tweet: related code](https://twitter.com/threepointone/status/1056594421079261185)  
-[tweet: hooks minification](https://twitter.com/jamiebuilds/status/1056015484364087297)  
 [docs: hooks motivation](https://reactjs.org/docs/hooks-intro.html#motivation)
 
 ```notes
@@ -66,6 +75,10 @@ import 'style-loader!css-loader!./styles/base.css';
 - componentDidMount
 - componentDidUpdate
 - componentWillUnmount
+
+```notes
+like the above API's but not synchronous -> impacts timing and tests
+```
 
 ---
 
@@ -162,6 +175,17 @@ As long as you dont depend on implementation details in your tests - `there shou
   lang="javascript"
   code={require('!raw-loader!./components/TestEffectHook.js')}
 />
+
+---
+
+# Hooks let us...
+
+- reuse component logic without changing hierarchy
+- split one component into smaller functions based on what pieces are related
+- use React without classes 😆❤️
+
+[tweet: related code](https://twitter.com/threepointone/status/1056594421079261185)  
+[tweet: hooks minification](https://twitter.com/jamiebuilds/status/1056015484364087297)
 
 ---
 
