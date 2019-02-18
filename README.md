@@ -1,6 +1,6 @@
 # React hooks
 
-![react hooks][./react-hooks.png]
+![hooks][react-hooks.png]
 This was generated with [mdx-deck][]'s `npm init deck` command.
 
 ## Development
