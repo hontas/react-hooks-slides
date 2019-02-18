@@ -1,5 +1,10 @@
 import { act } from 'react-dom/test-utils';
-import { render, fireEvent, cleanup, waitForElement } from 'react-testing-library';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement
+} from 'react-testing-library';
 import UseCustomHook from './UseCustomHook';
 
 describe('TestEffectHook', () => {

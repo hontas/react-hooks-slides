@@ -1,6 +1,6 @@
 () => {
   function Modal({ close }) {
-    const modalRef = React.useRef(null);
+    const modalRef = useRef(null);
 
     function handleClick({ target }) {
       if (target === modalRef.current) return;
@@ -9,7 +9,7 @@
       }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
       document.addEventListener('click', handleClick);
 
       return () => {
@@ -26,7 +26,7 @@
   }
 
   function Wrapper() {
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     return (
       <div style={{ padding: '1em' }}>

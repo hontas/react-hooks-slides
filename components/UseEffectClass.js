@@ -2,7 +2,7 @@
   class Modal extends React.Component {
     constructor(props) {
       super(props);
-      this.modalRef = React.createRef();
+      this.modalRef = createRef();
       this.handleClick = this.handleClick.bind(this);
     }
 

@@ -2,8 +2,7 @@ import { Head } from 'mdx-deck';
 import { LiveCode } from 'mdx-deck-live-code';
 import { CodeSurfer } from 'mdx-deck-code-surfer';
 import dracula from 'prism-react-renderer/themes/dracula';
-import LocaleContext, { LocaleContextProvider } from './context/LocaleContextHook';
-import usePersistantState from './lib/customHook';
+import providerProps from './lib/providerProps';
 export { default as theme } from './theme';
 import 'style-loader!css-loader!./styles/base.css';
 
@@ -27,7 +26,7 @@ import 'style-loader!css-loader!./styles/base.css';
 
 ---
 
-# Hooks are like mixins but...
+# Like mixins but...
 
 - they allow passing state from one to another.
 - it's explicit where logic is coming from.
@@ -56,11 +55,18 @@ import 'style-loader!css-loader!./styles/base.css';
 
 ---
 
-<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseStateClass.js')} />
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseStateClass.js')}
+/>
 
 ---
 
-<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseStateHook.js')} />
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseStateHook.js')}
+  providerProps={providerProps}
+/>
 
 ```notes
 - setState(value)
@@ -82,11 +88,30 @@ like the above API's but not synchronous -> impacts timing and tests
 
 ---
 
-<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseEffectClass.js')} />
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseEffectClass.js')}
+/>
 
 ---
 
-<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseEffectHook.js')} />
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseEffectHook.js')}
+  providerProps={providerProps}
+/>
+
+---
+
+# The curious case of setInterval
+
+---
+
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseInterval.js')}
+  providerProps={providerProps}
+/>
 
 ---
 
@@ -98,26 +123,24 @@ like the above API's but not synchronous -> impacts timing and tests
   lang="javascript"
   theme={dracula}
   code={require('!raw-loader!./context/LocaleContextHook.js')}
+  providerProps={providerProps}
 />
 
 ---
 
 <LiveCode
   size="fullscreen"
-  providerProps={{
-    scope: { LocaleContext, LocaleContextProvider }
-  }}
+  providerProps={providerProps}
   code={require('!raw-loader!./components/UseContextComp.js')}
+  providerProps={providerProps}
 />
 
 ---
 
 <LiveCode
   size="fullscreen"
-  providerProps={{
-    scope: { LocaleContext, LocaleContextProvider }
-  }}
   code={require('!raw-loader!./components/UseContextHook.js')}
+  providerProps={providerProps}
 />
 
 ---
@@ -135,7 +158,11 @@ like the above API's but not synchronous -> impacts timing and tests
 
 ---
 
-<LiveCode size="fullscreen" code={require('!raw-loader!./components/UseRefHook.js')} />
+<LiveCode
+  size="fullscreen"
+  code={require('!raw-loader!./components/UseRefHook.js')}
+  providerProps={providerProps}
+/>
 
 ---
 
@@ -156,10 +183,8 @@ Easily share and test reusable logic
 
 <LiveCode
   title="Custom hook"
-  providerProps={{
-    scope: { usePersistantState }
-  }}
   code={require('!raw-loader!./components/UseCustomHook.js')}
+  providerProps={providerProps}
 />
 
 ---
@@ -184,7 +209,8 @@ As long as you dont depend on implementation details in your tests - `there shou
 - split one component into smaller functions based on what pieces are related
 - use React without classes 😆❤️
 
-[tweet: related code](https://twitter.com/threepointone/status/1056594421079261185)  
+[tweet: related code](https://twitter.com/threepointone/status/1056594421079261185)
+
 [tweet: hooks minification](https://twitter.com/jamiebuilds/status/1056015484364087297)
 
 ---

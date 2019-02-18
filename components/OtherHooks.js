@@ -1,9 +1,13 @@
 () => {
   const [lazyState, setLazyState] = useState(() => expensiveComputation(props));
 
-  const [reducedState, dispatch] = useReducer(reducer, initialState, (initialState) => {
-    return { ...initialState };
-  });
+  const [reducedState, dispatch] = useReducer(
+    reducer,
+    initialState,
+    (initialState) => {
+      return { ...initialState };
+    }
+  );
 
   const memoizedCallback = useCallback(() => {
     doSomething(reducedState);

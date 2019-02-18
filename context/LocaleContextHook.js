@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const LocaleContext = React.createContext();
 
 export function LocaleContextProvider({ children }) {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     locale: 'sv-se',
     isLoading: true,
     availableLocales: []
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timeoutId = setTimeout(() => {
       setState({
         ...state,

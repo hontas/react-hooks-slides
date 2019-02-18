@@ -2,7 +2,7 @@
 
 () => {
   function UseContextComp() {
-    const context = React.useContext(LocaleContext);
+    const context = useContext(LocaleContext);
 
     return (
       <div>

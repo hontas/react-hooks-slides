@@ -1,5 +1,5 @@
 function StatefulHook() {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="expandable">

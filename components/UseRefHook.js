@@ -1,12 +1,12 @@
 function UseRef({ close }) {
-  const [seconds, setSeconds] = React.useState(0);
-  const intervalRef = React.useRef(null);
+  const [seconds, setSeconds] = useState(0);
+  const intervalRef = useRef(null);
   let intervalId;
 
   const clearIntervalLet = () => clearInterval(intervalId);
   const clearIntervalRef = () => clearInterval(intervalRef.current);
 
-  React.useEffect(() => {
+  useEffect(() => {
     intervalId = setInterval(() => setSeconds((s) => s + 1), 1000);
     intervalRef.current = intervalId;
     return clearIntervalRef;
