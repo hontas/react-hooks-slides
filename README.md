@@ -1,5 +1,5 @@
 
-# mdx-deck basic template
+# React hooks
 
 This was generated with [mdx-deck][]'s `npm init deck` command.
 
