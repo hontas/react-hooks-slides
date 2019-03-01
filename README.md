@@ -1,7 +1,9 @@
 # React hooks
 
 ![hooks](react-hooks.png)
-This was generated with [mdx-deck][]'s `npm init deck` command.
+> This was generated with [mdx-deck][]'s `npm init deck` command.
+
+View slides here: https://hontas.github.io/react-hooks-slides  
 
 ## Development
 
