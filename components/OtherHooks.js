@@ -17,6 +17,8 @@
 
   const refContainer = useRef(initialValue);
 
+  useDebugValue(date, (d) => d.toDateString());
+
   useImperativeHandle(ref, createHandle, []); // use with forwardRef
 
   useLayoutEffect(() => {
