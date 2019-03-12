@@ -1,44 +1,35 @@
-() => {
-  function Modal({ close }) {
-    const modalRef = useRef(null);
+// import React, { useState, useEffect } from 'react';
 
-    function handleClick({ target }) {
-      if (target === modalRef.current) return;
-      if (target.contains(modalRef.current)) {
-        close();
+function Modal() {
+  const [value, setValue] = useState('');
+
+  function handleUnload(event) {
+    setValue((value) => {
+      if (value && !window.confirm()) {
+        event.preventDefault();
+        event.returnValue = '';
       }
-    }
-
-    useEffect(() => {
-      document.addEventListener('click', handleClick);
-
-      return () => {
-        document.removeEventListener('click', handleClick);
-      };
-    }, []);
-
-    return (
-      <div ref={modalRef} className="modal">
-        <button onClick={close}>╳</button>
-        <p>Modal</p>
-      </div>
-    );
+      return value;
+    });
   }
 
-  function Wrapper() {
-    const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleUnload);
 
-    return (
-      <div style={{ padding: '1em' }}>
-        {!showModal && (
-          <button className="btn" onClick={() => setShowModal(true)}>
-            show modal
-          </button>
-        )}
-        {showModal && <Modal close={() => setShowModal(false)} />}
-      </div>
-    );
-  }
+    return () => window.removeEventListener('beforeunload', handleUnload);
+  }, []);
 
-  return <Wrapper />;
-};
+  return (
+    <div style={{ padding: '1em' }}>
+      <form className="modal">
+        <label>
+          <input
+            value={value}
+            onChange={({ target }) => setValue(target.value)}
+          />
+        </label>
+        <p>Avega Sensationals</p>
+      </form>
+    </div>
+  );
+}

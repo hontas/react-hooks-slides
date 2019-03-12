@@ -1,3 +1,5 @@
+// import React, { useState } from 'react';
+
 function StatefulHook() {
   const [isExpanded, setIsExpanded] = useState(false);
 
